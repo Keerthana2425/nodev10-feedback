@@ -1,37 +1,34 @@
-import React, { useState, useMemo } from 'react';
-import {
-  Grid, Card, CardContent, Typography, Button,
-} from '@mui/material';
-import countryList from 'react-select-country-list';
-import Select from 'react-select';
-import PhoneInput from 'react-phone-input-international'
-import 'react-phone-input-international/lib/style.css'
+import React, { useState, useMemo } from "react";
+import { Grid, Card, CardContent, Typography, Button } from "@mui/material";
+import countryList from "react-select-country-list";
+import Select from "react-select";
+import PhoneInput from "react-phone-input-international";
+import "react-phone-input-international/lib/style.css";
 
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
-import { Link } from 'react-router-dom';
-import InputField from '../Reusable/InputField';
-import LogoComp from '../Reusable/LogoComponents/logoComp';
-import loginimg from '../../Images/login-image.png';
-import Success from '../Success/Success';
+import { Link } from "react-router-dom";
+import InputField from "../Reusable/InputField";
+import LogoComp from "../Reusable/LogoComponents/logoComp";
+import loginimg from "../../Images/login-image.png";
+import Success from "../Success/Success";
 
 const customStyles = {
   control: (base) => ({
     ...base,
-    height: 39,
-    minHeight: 39,
+    height: 40,
+    minHeight: 40,
   }),
 };
 
 function SignUp() {
-  const [businessName, setBusinessName] = useState('');
-  const [holderName, setHolderName] = useState('');
-  const [value, setValue] = useState('');
-  const [email, setEmail] = useState('');
-  const [contact, setContact] = useState('');
+  const [businessName, setBusinessName] = useState("");
+  const [holderName, setHolderName] = useState("");
+  const [value, setValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
   const [businessLogo, setBusinessLogo] = useState(null);
-  // const [disableButton, setDisableButton] = useState(true);
   const [success, setSuccess] = useState(false);
   const options = useMemo(() => countryList().getData(), []);
 
@@ -40,9 +37,8 @@ function SignUp() {
   };
 
   const onChangeBusinessLogo = (e) => {
-    // console.log(e.target.files[0]);
     setBusinessLogo(e.target.files[0]);
-    console.log(businessLogo)
+    console.log(businessLogo);
   };
 
   const onChangeBusiness = (e) => {
@@ -78,10 +74,10 @@ function SignUp() {
     <Grid
       // xs={12}
       sx={{
-        backgroundColor: '#F2F2F2',
-        height: '100vh',
-        width: '100%',
-        paddingLeft: '3%',
+        backgroundColor: "#F2F2F2",
+        height: "100vh",
+        width: "100%",
+        paddingLeft: "3%",
       }}
     >
       <LogoComp />
@@ -93,103 +89,108 @@ function SignUp() {
         />
       ) : (
         <Grid
-          wrap="wrap"
           container
           sx={{
-            width: '100%',
+            width: "100%",
+            paddingRight: "5%",
           }}
+          justifyContent="space-between"
         >
           <Grid
-            xs={6}
+            xs={5.5}
             item
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minWidth: '500px',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "400px",
             }}
           >
-            <img style={{ width: '80%' }} src={loginimg} alt="login" />
+            <img style={{ width: "90%" }} src={loginimg} alt="login" />
           </Grid>
           <Grid
             item
-            xs={6}
+            xs={5}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '50%',
-              paddingRight: '1.5%',
-              minWidth: '500px',
+              // border: "1px solid blue",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // height: "50%",
+              // paddingRight: "1.5%",
+              minWidth: "450px",
             }}
           >
             <Card
               elevation={3}
-              sx={{ width: '70%', height: '100%', padding: '1.5% 4% 1.5% 4%' }}
+              sx={{
+                width: "100%",
+                padding: "1.5% 4% 1.5% 4%",
+              }}
             >
               <CardContent>
-                <Typography sx={{ fontSize: '1.35rem', fontWeight: 600 }}>
+                <Typography sx={{ fontSize: "1.35rem", fontWeight: 600 }}>
                   Sign Up !
                 </Typography>
-                <Grid sx={{ display: 'flex' }}>
+                <Grid sx={{ display: "flex" }}>
                   <Grid>
-                    <Typography sx={{ fontSize: '1rem', fontWeight: 550 }}>
+                    <Typography sx={{ fontSize: "1rem", fontWeight: 550 }}>
                       Already have an account? &nbsp;
                     </Typography>
                   </Grid>
-                  <Link to="/log-in" style={{ textDecoration: 'none' }}>
+                  <Link to="/log-in" style={{ textDecoration: "none" }}>
                     <Grid>
                       <Typography
                         sx={{
-                          fontSize: '1rem',
+                          fontSize: "1rem",
                           fontWeight: 550,
-                          color: '#68E98D',
-                          '&:hover': {
-                            textDecorationLine: 'underline',
-                            cursor: 'pointer',
+                          color: "#68E98D",
+                          "&:hover": {
+                            textDecorationLine: "underline",
+                            cursor: "pointer",
                           },
                         }}
                       >
-                        {' '}
+                        {" "}
                         Login
                       </Typography>
                     </Grid>
                   </Link>
                 </Grid>
                 <Grid>
-                  <Grid sx={{ margin: '3.5% 0 3% 0' }}>
+                  <Grid sx={{ margin: "3.5% 0 3% 0" }}>
                     <InputField
                       type="text"
                       changeAction={onChangeBusiness}
                       searchValue={businessName}
                       placeholder="Enter Bussiness Name"
-                      icon={(
+                      icon={
                         <AccountCircleOutlinedIcon
                           fontSize="small"
-                          style={{ color: 'grey', marginRight: '20px' }}
+                          style={{ color: "grey", marginRight: "20px" }}
                         />
-                      )}
+                      }
                       label="Enter Bussiness Name"
                     />
                   </Grid>
-                  <Grid sx={{ margin: '3.5% 0 3% 0' }}>
+                  <Grid sx={{ margin: "3.5% 0 3% 0" }}>
                     <InputField
                       type="text"
                       changeAction={onChangeHolder}
                       searchValue={holderName}
                       placeholder="Enter Your Name"
-                      icon={(
+                      icon={
                         <AccountCircleOutlinedIcon
                           fontSize="small"
-                          style={{ color: 'grey', marginRight: '20px' }}
+                          style={{ color: "grey", marginRight: "20px" }}
                         />
-                      )}
+                      }
                       label="Enter Your Name"
                     />
                   </Grid>
-                  <Grid sx={{ margin: '3.5% 0 3% 0' }}>
-                    <Grid sx={{ marginBottom: '8px' }}>Select Country</Grid>
-                    <Grid sx={{ width: '100%' }}>
+                  <Grid sx={{ margin: "3.5% 0 3% 0" }}>
+                    <Grid sx={{ marginBottom: "8px" }}>Select Country</Grid>
+                    <Grid sx={{ width: "100%" }}>
                       <Select
                         options={options}
                         styles={customStyles}
@@ -199,36 +200,34 @@ function SignUp() {
                       />
                     </Grid>
                   </Grid>
-                  <Grid sx={{ margin: '3.5% 0 3% 0' }}>
+                  <Grid sx={{ margin: "3.5% 0 3% 0" }}>
                     <InputField
                       type="text"
                       changeAction={onChangeEmail}
                       searchValue={email}
                       placeholder="Enter Your Email"
-                      icon={(
+                      icon={
                         <EmailOutlinedIcon
                           fontSize="small"
-                          style={{ color: 'grey', marginRight: '20px' }}
+                          style={{ color: "grey", marginRight: "20px" }}
                         />
-                      )}
+                      }
                       label="Contact"
                     />
                   </Grid>
-                  <Grid sx={{ margin: '2% 0 2% 0' }}>
+                  <Grid sx={{ margin: "2% 0 2% 0" }}>
                     <PhoneInput
                       inputStyle={{
-                        width: '100%', height: '39px'
+                        width: "100%",
+                        height: "40px",
                       }}
-                      country={'bh'}
+                      country={"bh"}
                       value={contact}
                       onChange={onChangeContact}
                     />
-
                   </Grid>
-                  <Grid sx={{ margin: '3.8% 0 3% 0' }}>
-                    <Grid marginBottom="8px">
-                      Bussiness Logo
-                    </Grid>
+                  <Grid sx={{ margin: "3.8% 0 3% 0" }}>
+                    <Grid marginBottom="8px">Bussiness Logo</Grid>
                     <input type="file" onChange={onChangeBusinessLogo} />
                   </Grid>
                   <Button
@@ -237,14 +236,14 @@ function SignUp() {
                     // disabled={disableButton}
                     onClick={onRegister}
                     sx={{
-                      height: '7vh',
-                      marginTop: '4%',
-                      width: '100%',
-                      backgroundColor: '#68E98D',
+                      height: "7vh",
+                      marginTop: "4%",
+                      width: "100%",
+                      backgroundColor: "#68E98D",
                       fontWeight: 550,
-                      color: 'black',
-                      '&:hover': {
-                        bgcolor: '#68E98D',
+                      color: "black",
+                      "&:hover": {
+                        bgcolor: "#68E98D",
                       },
                     }}
                   >

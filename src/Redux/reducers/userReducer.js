@@ -1,11 +1,13 @@
-import ActionTypes from '../constants/actionTypes';
+import ActionTypes from "../constants/actionTypes";
 
 const initialState = {
-  users: [{
-    id: 1,
-    fullName: 'keerthana',
-    category: 'programmer',
-  }],
+  users: [
+    {
+      id: 1,
+      fullName: "keerthana",
+      category: "programmer",
+    },
+  ],
 };
 
 export const userReducer = (state = initialState, { type, payload } = {}) => {
